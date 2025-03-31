@@ -1,0 +1,11 @@
+<% content_for :title, "New weapon type" %>
+
+<h1>New weapon type</h1>
+
+<%= render "form", weapon_type: @weapon_type %>
+
+<br>
+
+<div>
+  <%= link_to "Back to weapon types", weapon_types_path %>
+</div>
