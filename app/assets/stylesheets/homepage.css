@@ -1,0 +1,37 @@
+@import "bootstrap";
+
+
+body{
+    text-align: center;
+    background: #141414;
+    color: #fff;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh; 
+
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-xl{
+    padding: 50px 20px;
+    font-size: 20px;
+    border-radius: 10px;
+    width:150%;
+    background-color: #973618;
+    border-color: #973618;
+}
+
+.btn-xl:hover, .btn-xl:focus{
+    background-color: #df3517;
+    border-color: #df3517;
+}
+
