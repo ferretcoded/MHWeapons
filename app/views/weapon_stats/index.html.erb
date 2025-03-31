@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Weapon stats" %>
+
+<h1>Weapon stats</h1>
+
+<div id="weapon_stats">
+  <% @weapon_stats.each do |weapon_stat| %>
+    <%= render weapon_stat %>
+    <p>
+      <%= link_to "Show this weapon stat", weapon_stat %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New weapon stat", new_weapon_stat_path %>

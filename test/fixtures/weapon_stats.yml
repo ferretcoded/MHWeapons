@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_id: 1
+  name: MyString
+  sharpness: MyString
+  attack: 1
+  affinity: 1
+  element_type: MyString
+  element_value: 1
+  slot1: 1
+  slot2: 1
+  slot3: 1
+  skills: MyString
+  rarity: MyString
+
+two:
+  type_id: 1
+  name: MyString
+  sharpness: MyString
+  attack: 1
+  affinity: 1
+  element_type: MyString
+  element_value: 1
+  slot1: 1
+  slot2: 1
+  slot3: 1
+  skills: MyString
+  rarity: MyString

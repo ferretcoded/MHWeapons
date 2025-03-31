@@ -1,0 +1,12 @@
+<% content_for :title, "Editing weapon stat" %>
+
+<h1>Editing weapon stat</h1>
+
+<%= render "form", weapon_stat: @weapon_stat %>
+
+<br>
+
+<div>
+  <%= link_to "Show this weapon stat", @weapon_stat %> |
+  <%= link_to "Back to weapon stats", weapon_stats_path %>
+</div>
