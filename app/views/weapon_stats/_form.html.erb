@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :type_id, style: "display: block" %>
-    <%= form.number_field :type_id %>
+    <%= form.label :weapon_type_id, style: "display: block" %>
+    <%= form.collection_select :weapon_type_id, WeaponType.all, :id, :name, { prompt: "Select a Weapon Type" }%>
   </div>
 
   <div>

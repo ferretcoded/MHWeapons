@@ -1,7 +1,7 @@
 <div id="<%= dom_id weapon_stat %>">
   <p>
-    <strong>Type Id:</strong>
-    <%= weapon_stat.type_id %>
+    <strong>Weapon Type:</strong>
+    <%= weapon_stat.weapon_type&.name || 'None' %>
   </p>
 
   <p>

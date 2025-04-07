@@ -65,6 +65,6 @@ class WeaponStatsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def weapon_stat_params
-      params.expect(weapon_stat: [ :type_id, :name, :sharpness, :attack, :affinity, :element_type, :element_value, :slot1, :slot2, :slot3, :skills, :rarity ])
+      params.expect(weapon_stat: [ :weapon_type_id, :name, :sharpness, :attack, :affinity, :element_type, :element_value, :slot1, :slot2, :slot3, :skills, :rarity ])
     end
 end

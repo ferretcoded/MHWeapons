@@ -10,9 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_03_25_184050) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_07_084000) do
   create_table "weapon_stats", force: :cascade do |t|
-    t.integer "type_id"
     t.string "name"
     t.string "sharpness"
     t.integer "attack"
@@ -26,6 +25,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_25_184050) do
     t.string "rarity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "weapon_type_id", null: false
+    t.index ["weapon_type_id"], name: "index_weapon_stats_on_weapon_type_id"
   end
 
   create_table "weapon_types", force: :cascade do |t|
@@ -33,4 +34,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_03_25_184050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_foreign_key "weapon_stats", "weapon_types"
 end
