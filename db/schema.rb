@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_07_084000) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_08_155900) do
   create_table "weapon_stats", force: :cascade do |t|
     t.string "name"
     t.string "sharpness"

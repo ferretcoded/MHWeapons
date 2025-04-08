@@ -6,7 +6,7 @@ module WeaponStatsHelper
       "yellow" => "#ffcc33",
       "green" => "#33cc33",
       "blue" => "#3399ff",
-      "white" => "#f0f0f0",  # Changed from pure white to off-white
+      "white" => "#f0f0f0", 
       "purple" => "#cc99ff"
     }[sharpness.to_s.downcase] || "#cccccc"
   end

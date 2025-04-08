@@ -36,7 +36,7 @@
               <% if weapon_stat.element_type.present? %>
                 <span class="badge <%= element_badge_class(weapon_stat.element_type) %>">
                   <%= weapon_stat.element_type %>
-                  <% if weapon_stat.element_value > 0 %>
+                  <% if weapon_stat.element_value.present? && weapon_stat.element_value >= 0 %>
                     <span class="ms-1"><%= weapon_stat.element_value %></span>
                   <% end %>
                 </span>
@@ -68,26 +68,28 @@
       </div>
 
       <!-- Full Width Sharpness Bar -->
-      <div class="col-12 mt-2">
-        <div class="sharpness-display bg-light p-2 rounded">
-          <div class="d-flex justify-content-between align-items-center mb-1">
-            <span class="text-muted small">SHARPNESS:</span>
-            <span class="fw-bold d-inline-block px-2 rounded" 
-                  style="color: <%= sharpness_color(weapon_stat.sharpness) %>;
-                         background-color: <%= sharpness_color(weapon_stat.sharpness) == '#f0f0f0' ? '#333' : 'transparent' %>;
-                         border: 1px solid <%= sharpness_border_color(weapon_stat.sharpness) %>;">
-              <%= weapon_stat.sharpness %>
-            </span>
-          </div>
-          <div class="progress" style="height: 8px; background-color: #e9ecef;">
-            <div class="progress-bar <%= sharpness_progress_class(weapon_stat.sharpness) %>" 
-                 role="progressbar" 
-                 style="width: <%= sharpness_width(weapon_stat.sharpness) %>%;
-                        <%= 'box-shadow: inset 0 0 0 1px #ccc;' if weapon_stat.sharpness.to_s.downcase == 'white' %>">
+      <% if weapon_stat.sharpness.present? && weapon_stat.sharpness != 'None' %>
+        <div class="col-12 mt-2">
+          <div class="sharpness-display bg-light p-2 rounded">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="text-muted small">SHARPNESS:</span>
+              <% color, value = weapon_stat.sharpness.split %>
+              <span class="fw-bold d-inline-block px-2 rounded" 
+                    style="color: <%= sharpness_color(color) %>;
+                          background-color: <%= color.downcase == 'white' ? '#333' : 'transparent' %>;">
+                <%= weapon_stat.sharpness %>
+              </span>
+            </div>
+            <div class="progress" style="height: 10px; background-color: #e9ecef;">
+              <div class="progress-bar" 
+                  style="width: 100%;
+                          background-color: <%= sharpness_color(color) %>;
+                          <%= 'box-shadow: inset 0 0 0 1px #ccc;' if color.downcase == 'white' %>">
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
 
       <!-- Skills (if present) -->
       <% if weapon_stat.skills.present? && weapon_stat.skills != "None" %>
