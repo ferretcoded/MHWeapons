@@ -1,16 +1,18 @@
-<p style="color: green"><%= notice %></p>
+<div class="container py-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="display-5 fw-bold">Weapon Stats</h1>
+    <%= link_to new_weapon_stat_path, class: "btn btn-primary" do %>
+      <i class="bi bi-plus-lg"></i> New Weapon
+    <% end %>
+  </div>
 
-<% content_for :title, "Weapon stats" %>
-
-<h1>Weapon stats</h1>
-
-<div id="weapon_stats">
-  <% @weapon_stats.each do |weapon_stat| %>
-    <%= render weapon_stat %>
-    <p>
-      <%= link_to "Show this weapon stat", weapon_stat %>
-    </p>
-  <% end %>
+  <div class="row row-cols-1 row-cols-md-2 g-4 justify-content-center">  <!-- Updated grid -->
+    <% @weapon_stats.each do |weapon_stat| %>
+      <div class="col">
+        <div class="h-100">  <!-- Added h-100 wrapper -->
+          <%= render weapon_stat %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New weapon stat", new_weapon_stat_path %>

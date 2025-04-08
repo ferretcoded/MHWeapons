@@ -1,0 +1,170 @@
+/* Weapon Card Styling */
+.weapon-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: 450px;
+  }
+  
+  .weapon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  
+  /* Card Body */
+  .card-body {
+    flex-grow: 1;
+    padding: 1rem 1.25rem;
+  }
+  
+  /* Sharpness Display */
+  .sharpness-display .progress {
+    background-color: #333;
+    border-radius: 5px;
+    height: 10px;
+  }
+  
+  .sharpness-display .progress-bar {
+    transition: width 0.5s ease;
+    border-radius: 4px;
+  }
+  
+  /* Sharpness Label */
+  .sharpness-display span.fw-bold {
+    font-size: 0.875rem;
+  }
+  
+  /* Stat & Attribute Boxes */
+  .stat-box,
+  .attribute-box {
+    flex: 1;
+    min-height: 70px;
+    transition: background-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .stat-box:hover {
+    background-color: #e9ecef !important;
+    transform: scale(1.03);
+  }
+  
+  .attribute-box:hover {
+    background-color: #f8f9fa !important;
+  }
+  
+  /* Stat Labels */
+  .stat-label {
+    letter-spacing: 1px;
+    font-size: 0.75rem;
+  }
+  
+  .stat-value {
+    line-height: 1;
+    font-size: 1.5rem;
+  }
+  
+  /* Badge Colors */
+  .bg-purple { background-color: #6f42c1; }
+  .bg-indigo { background-color: #6610f2; }
+  .bg-orange { background-color: #fd7e14; }
+  .bg-teal { background-color: #20c997; }
+  .bg-pink { background-color: #d63384; }
+  .bg-info { background-color: #0dcaf0 !important; }
+  
+  /* Element Value Font Weight */
+  .badge .ms-1 {
+    font-weight: bold;
+  }
+  
+  /* Decoration Slots */
+  .slot {
+    position: relative;
+    font-size: 1.5rem;
+  }
+  
+  .slot-level {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    font-size: 0.7rem;
+    background: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+  }
+  
+  /* Footer Buttons */
+  .card-footer .btn {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    min-width: 100px;
+  }
+  
+  .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #212529;
+  }
+  
+  .btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+  }
+  
+  .btn-outline-primary:hover, 
+  .btn-outline-secondary:hover, 
+  .btn-outline-danger:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Action Buttons */
+  .action-buttons {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  /* Grid Adjustments */
+  .row.g-2 > .col-md-6 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .row.g-2 > div {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Ensure right column boxes align */
+  .col-md-6 .attribute-box {
+    height: calc(50% - 0.5rem); /* matches mt-2 spacing */
+  }
+  
+  /* Fix for empty values */
+  .attribute-box .text-muted {
+    white-space: nowrap;
+  }
+  
+  .attribute-box:empty {
+    display: none;
+  }
+  
+  /* Center card on large screens */
+  @media (min-width: 992px) {
+    .weapon-card {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  

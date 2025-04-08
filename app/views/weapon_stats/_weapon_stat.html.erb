@@ -1,62 +1,124 @@
-<div id="<%= dom_id weapon_stat %>">
-  <p>
-    <strong>Weapon Type:</strong>
-    <%= weapon_stat.weapon_type&.name || 'None' %>
-  </p>
+<div class="card weapon-card mb-4 shadow h-100" style="max-width: 450px;">
+  <div class="card-header bg-dark text-white py-2">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="mb-0 fs-5 fw-bold">
+        <%= weapon_stat.name %>
+        <span class="badge bg-warning text-dark ms-2 fs-6">R<%= weapon_stat.rarity %></span>
+      </h5>
+      <span class="badge <%= weapon_type_badge_class(weapon_stat.weapon_type&.name) %> fs-6">
+        <%= weapon_stat.weapon_type&.name || 'Unknown' %>
+      </span>
+  </div>
+</div>
 
-  <p>
-    <strong>Name:</strong>
-    <%= weapon_stat.name %>
-  </p>
+  <div class="card-body p-3">
+    <div class="row g-2">
+      <!-- Left Column (Attack & Affinity) -->
+      <div class="col-md-6">
+        <div class="stat-box bg-light p-2 rounded text-center h-100">
+          <div class="stat-label text-muted small mb-1">ATTACK</div>
+          <div class="stat-value fw-bold fs-4"><%= weapon_stat.attack %></div>
+        </div>
+        
+        <div class="stat-box bg-light p-2 rounded text-center mt-2 h-100">
+          <div class="stat-label text-muted small mb-1">AFFINITY</div>
+          <div class="stat-value fw-bold fs-4"><%= weapon_stat.affinity %>%</div>
+        </div>
+      </div>
 
-  <p>
-    <strong>Sharpness:</strong>
-    <%= weapon_stat.sharpness %>
-  </p>
+      <!-- Right Column (Element & Slots) -->
+      <div class="col-md-6">
+        <!-- Element -->
+        <div class="attribute-box bg-light p-2 rounded h-100">
+          <div class="d-flex flex-column h-100">
+            <span class="text-muted small">ELEMENT:</span>
+            <div class="mt-auto">
+              <% if weapon_stat.element_type.present? %>
+                <span class="badge <%= element_badge_class(weapon_stat.element_type) %>">
+                  <%= weapon_stat.element_type %>
+                  <% if weapon_stat.element_value > 0 %>
+                    <span class="ms-1"><%= weapon_stat.element_value %></span>
+                  <% end %>
+                </span>
+              <% else %>
+                <span class="text-muted">None</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
 
-  <p>
-    <strong>Attack:</strong>
-    <%= weapon_stat.attack %>
-  </p>
+        <!-- Slots -->
+        <div class="attribute-box bg-light p-2 rounded mt-2 h-100">
+          <div class="d-flex flex-column h-100">
+            <span class="text-muted small">SLOTS:</span>
+            <div class="mt-auto">
+              <% [weapon_stat.slot1, weapon_stat.slot2, weapon_stat.slot3].each do |slot| %>
+                <% if slot > 0 %>
+                  <span class="badge bg-info me-1">
+                    <i class="bi bi-gem"></i> <%= slot %>
+                  </span>
+                <% end %>
+              <% end %>
+              <% if [weapon_stat.slot1, weapon_stat.slot2, weapon_stat.slot3].all? { |s| s == 0 } %>
+                <span class="text-muted">None</span>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <p>
-    <strong>Affinity:</strong>
-    <%= weapon_stat.affinity %>
-  </p>
+      <!-- Full Width Sharpness Bar -->
+      <div class="col-12 mt-2">
+        <div class="sharpness-display bg-light p-2 rounded">
+          <div class="d-flex justify-content-between align-items-center mb-1">
+            <span class="text-muted small">SHARPNESS:</span>
+            <span class="fw-bold d-inline-block px-2 rounded" 
+                  style="color: <%= sharpness_color(weapon_stat.sharpness) %>;
+                         background-color: <%= sharpness_color(weapon_stat.sharpness) == '#f0f0f0' ? '#333' : 'transparent' %>;
+                         border: 1px solid <%= sharpness_border_color(weapon_stat.sharpness) %>;">
+              <%= weapon_stat.sharpness %>
+            </span>
+          </div>
+          <div class="progress" style="height: 8px; background-color: #e9ecef;">
+            <div class="progress-bar <%= sharpness_progress_class(weapon_stat.sharpness) %>" 
+                 role="progressbar" 
+                 style="width: <%= sharpness_width(weapon_stat.sharpness) %>%;
+                        <%= 'box-shadow: inset 0 0 0 1px #ccc;' if weapon_stat.sharpness.to_s.downcase == 'white' %>">
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <p>
-    <strong>Element type:</strong>
-    <%= weapon_stat.element_type %>
-  </p>
+      <!-- Skills (if present) -->
+      <% if weapon_stat.skills.present? && weapon_stat.skills != "None" %>
+        <div class="col-12 mt-2">
+          <div class="attribute-box bg-light p-2 rounded">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="text-muted small">SKILLS:</span>
+              <div class="text-end">
+                <%= weapon_stat.skills.split(',').map(&:strip).reject(&:blank?).map do |skill| %>
+                  <span class="badge bg-secondary me-1 mb-1"><%= skill %></span>
+                <% end.join.html_safe %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-  <p>
-    <strong>Element value:</strong>
-    <%= weapon_stat.element_value %>
-  </p>
-
-  <p>
-    <strong>Slot1:</strong>
-    <%= weapon_stat.slot1 %>
-  </p>
-
-  <p>
-    <strong>Slot2:</strong>
-    <%= weapon_stat.slot2 %>
-  </p>
-
-  <p>
-    <strong>Slot3:</strong>
-    <%= weapon_stat.slot3 %>
-  </p>
-
-  <p>
-    <strong>Skills:</strong>
-    <%= weapon_stat.skills %>
-  </p>
-
-  <p>
-    <strong>Rarity:</strong>
-    <%= weapon_stat.rarity %>
-  </p>
-
+  <!-- Card Footer -->
+  <div class="card-footer bg-light py-2">
+    <div class="d-flex justify-content-between align-items-center">
+      <%= link_to "View Details", weapon_stat, class: "btn btn-sm btn-primary px-3" %>
+      <div class="action-buttons">
+        <%= link_to "Edit", edit_weapon_stat_path(weapon_stat), 
+            class: "btn btn-sm btn-warning px-3 me-1 text-white" %>
+        <%= button_to "Delete", weapon_stat, method: :delete, 
+            class: "btn btn-sm btn-danger px-3", 
+            data: { confirm: "Delete this weapon?" },
+            form: { class: "d-inline" } %>
+      </div>
+    </div>
+  </div>
 </div>
