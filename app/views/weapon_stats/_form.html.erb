@@ -21,12 +21,10 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="mb-3">
-  <%= form.label :sharpness, class: "form-label" %>
-  <%= form.text_field :sharpness, 
-        class: "form-control",
-        placeholder: "Color Value (e.g. 'Green 50') or 'None'" %>
-</div>
+  <div>
+    <%= form.label :sharpness, style: "display: block" %>
+    <%= form.text_field :sharpness %>
+  </div>
 
   <div>
     <%= form.label :attack, style: "display: block" %>

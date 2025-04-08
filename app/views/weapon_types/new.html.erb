@@ -1,11 +1,21 @@
 <% content_for :title, "New weapon type" %>
 
-<h1>New weapon type</h1>
-
-<%= render "form", weapon_type: @weapon_type %>
-
-<br>
-
-<div>
-  <%= link_to "Back to weapon types", weapon_types_path %>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h1 class="h3 mb-0">New weapon type</h1>
+        </div>
+        
+        <div class="card-body">
+          <%= render "form", weapon_type: @weapon_type %>
+        </div>
+        
+        <div class="card-footer text-end">
+          <%= link_to "Back to weapon types", weapon_types_path, class: "btn btn-outline-secondary" %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

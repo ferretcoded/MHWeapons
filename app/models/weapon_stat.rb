@@ -1,12 +1,11 @@
 class WeaponStat < ApplicationRecord
   belongs_to :weapon_type
-  
-  validates :slot1, inclusion: { in: 0..3 }, presence: true
-  validates :slot2, inclusion: { in: 0..3 }, presence: true
-  validates :slot3, inclusion: { in: 0..3 }, presence: true
+
+  validates :slot1, inclusion: { in: 0..3, message: "value must be between 1 and 3" }, presence: true
+  validates :slot2, inclusion: { in: 0..3, message: "value must be between 1 and 3" }, presence: true
+  validates :slot3, inclusion: { in: 0..3, message: "value must be between 1 and 3" }, presence: true
   validates :name, presence: true, uniqueness: true
 
-  # Update your custom validation
   validate :sharpness_format_valid
 
   private
